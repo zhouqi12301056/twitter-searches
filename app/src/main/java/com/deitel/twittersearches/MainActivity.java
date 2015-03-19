@@ -3,6 +3,7 @@
 // access and display in the device's web browser
 package com.deitel.twittersearches;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -119,7 +120,9 @@ public class MainActivity extends ListActivity
       // if tag is new, add to and sort tags, then display updated list
       if (!tags.contains(tag))
       {
-         tags.add(tag); // add new tag
+//         tags.add(tag); // add new tag
+            String url=getString(R.string.searchURL)+Uri.encode(savedSearches.getString(tag,""),"UTF-8");
+          tags.add(url);
          Collections.sort(tags, String.CASE_INSENSITIVE_ORDER);
          adapter.notifyDataSetChanged(); // rebind tags to ListView
       }
